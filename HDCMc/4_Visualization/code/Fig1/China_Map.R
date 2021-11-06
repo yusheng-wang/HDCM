@@ -57,4 +57,4 @@ china_map <- ggplot() + geom_polygon(
         , panel.grid.major = element_blank() 
         , panel.grid.minor = element_blank()
       )
-ggsave(plot = china_map, paste0("./figure/", 'Fig1_China.jpg'), dpi = 300)
+ggsave(plot = china_map, paste0("./figure/", 'Fig1_China.png'), dpi = 300)

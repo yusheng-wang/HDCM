@@ -93,5 +93,5 @@ CV_T_Dist_W <- spMixCall(Tab = "HDCM_W",
                          parallel = TRUE, verbose.VB = TRUE,
             						 verbose = TRUE, Object = "CITY",
             						 cs = 0.4, ct = 1, tol.vb = 1e-5,
-                         tol.real = 1e-3, itMax = 5e1, 
+                         tol.real = 1e-3, itMax = 2e0, 
 						             Obj.Seq = c(1:13))

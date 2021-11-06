@@ -100,6 +100,4 @@ p <- ggplot(data = Da) +
         , legend.key.height = unit(2,"line")
         , strip.text =  element_text(size = 20, colour = "black")
   )
-FILE <- "./figure/"
-ggsave(plot = p, paste0(FILE, 'Fig1_City',".png"),
-       dpi = 300, width  = 5, height = 10)
+ggsave(plot = p, file = './figure/Fig1_City.png', dpi = 300, width  = 5, height = 10)

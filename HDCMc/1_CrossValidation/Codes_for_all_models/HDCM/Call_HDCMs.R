@@ -1,6 +1,4 @@
 rm(list=ls())
-# remove.packages("stBase")
-# install.packages("./package/stBase_1.0.zip", repos = NULL, type = "win.binary")
 source("./R/PSTVB_Packages.R")
 data("SiteData", package = "stBase")
 data("GeoMap", package = "stBase")
@@ -47,7 +45,7 @@ Yts_Xts <- ParYtsXts(Model_Base_Table_Update, include = list(
 {
   # Yts_Xts$X_ts[2,,] <- sqrt(Yts_Xts$X_ts[2,,])
   p1 = dim(Yts_Xts$X_ts)[1]
-  p2 = 3
+  p2 = 0
   ######################################################################
   #                           Prior
   ######################################################################
@@ -93,7 +91,7 @@ CV_T_Dist_W <- spMixCall(Tab = "HDCM_S",
                          parallel = TRUE, verbose.VB = TRUE,
             						 verbose = TRUE, Object = "CITY",
             						 cs = 0.4, ct = 1, tol.vb = 1e-5,
-                         tol.real = 1e-3, itMax = 5e1, 
+                         tol.real = 1e-3, itMax = 2e0, 
 						             Obj.Seq = c(1:13))
 
 
