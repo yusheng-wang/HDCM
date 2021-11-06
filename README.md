@@ -66,31 +66,31 @@ Yts_Xts <- ParYtsXts(Model_Base_Table_Update,
   #                           4.1 Prior
   #---------------------------------------------------------------------
   prior <- list(
-    beta = list(betaX.mu = rep(0, p1),
-                betaX.Sigma2 = 1e5*diag(1, p1, p1),
-                betaZ.mu = rep(0, p2),
-                betaZ.Sigma2 = 1e5*diag(1, p2, p2))
-    , alpha = list(mu = c(0), Sigma2 = 1e5)
-    , Obs.tau2 = list(a = 2, b = 1)
-    , Proc.tau2 = list(a = 2, b = 1)
-    , Proc0.tau2 = list(a = 2, b = 1)
-    , theta1 = list(mu = 1e-2, Sigma2 =  1e5)
-  )
+	      beta = list(betaX.mu = rep(0, p1),
+			betaX.Sigma2 = 1e5*diag(1, p1, p1),
+			betaZ.mu = rep(0, p2),
+			betaZ.Sigma2 = 1e5*diag(1, p2, p2))
+	    , alpha = list(mu = c(0), Sigma2 = 1e5)
+	    , Obs.tau2 = list(a = 2, b = 1)
+	    , Proc.tau2 = list(a = 2, b = 1)
+	    , Proc0.tau2 = list(a = 2, b = 1)
+	    , theta1 = list(mu = 1e-2, Sigma2 =  1e5)
+	 )
   #---------------------------------------------------------------------
   #                        4.2 initialize  parameters
   #---------------------------------------------------------------------
   para <- list(
-    beta = list(E_betaX = c(2.5, 0.5, rep(0, p1-2)), 
-                E_betaZ = rep(0, p2))
-    , alpha = list(E_alpha = c(1))
-    , theta1 = list(E_theta1 = 1e-2, Sigma2 = 1)
-    , k = list(E_k = 1, a = 1e-1, b = 2e1)
-    , k0 = list(E_k0 = 1, a = 1e-1, b = 2e1)
-    , theta2 = list(E_theta2 = 0.1, a = 1e-2, b = 0.1) 
-    , Obs.tau2 = list(E_tau2 = 1, a = 2, b = 1)
-    , Proc.tau2 = list(E_tau2 = 1, a = 2, b = 1)
-    , Proc0.tau2 = list(E_tau2 = 1, a = 2, b = 1)
-  )
+	      beta = list(E_betaX = c(2.5, 0.5, rep(0, p1-2)), 
+			E_betaZ = rep(0, p2))
+	    , alpha = list(E_alpha = c(1))
+	    , theta1 = list(E_theta1 = 1e-2, Sigma2 = 1)
+	    , k = list(E_k = 1, a = 1e-1, b = 2e1)
+	    , k0 = list(E_k0 = 1, a = 1e-1, b = 2e1)
+	    , theta2 = list(E_theta2 = 0.1, a = 1e-2, b = 0.1) 
+	    , Obs.tau2 = list(E_tau2 = 1, a = 2, b = 1)
+	    , Proc.tau2 = list(E_tau2 = 1, a = 2, b = 1)
+	    , Proc0.tau2 = list(E_tau2 = 1, a = 2, b = 1)
+	  )
 }
 ##########################################################################################
 #                           Model fitting and prediction
@@ -98,7 +98,7 @@ Yts_Xts <- ParYtsXts(Model_Base_Table_Update,
 ds <- min(Data_Str$BAUs.Dist[row(Data_Str$BAUs.Dist)!= col(Data_Str$BAUs.Dist)])
 library(profvis)
 CV_T_Dist_W <- spMixCall(Tab = "HDCM_W", Site = Site, Yts_Xts = Yts_Xts, 
-            		Data_Str = Data_Str, prior = prior, para = para, 
+            		 Data_Str = Data_Str, prior = prior, para = para, 
                          Total = F, Database = FALSE, parallel = TRUE, 
 			 verbose.VB = TRUE, verbose = TRUE, Object = "CITY",
             		 cs = 0.4, ct = 1, tol.vb = 1e-5, tol.real = 1e-3, 
