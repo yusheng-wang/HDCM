@@ -29,6 +29,9 @@ data("GeoMap", package = "stBase")
 grid <- CreateGrid(Site, max.edge = c(.35, .65), offset = c(1e-1, 0.5),
                    cutoff = .05, col = "black", size = 1)
 grid$plot.grid
+```
+![]("./HDCMc/figure/Fig1_Site_CMAQ.png")
+```
 ##########################################################################################
 #                       2. Mapping matrix: H
 ##########################################################################################
