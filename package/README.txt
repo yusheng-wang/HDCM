@@ -1,1 +1,1 @@
-Another depedence package, STRbook,  can be available at https://github.com/andrewzm/STRbook
+An R packages, STRbook, used in Figure 7 can be available at https://github.com/andrewzm/STRbook.
