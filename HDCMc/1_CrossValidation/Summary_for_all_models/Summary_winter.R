@@ -8,6 +8,12 @@ file <- "./1_CrossValidation/data/"
 Season <- "W"
 City.Name <-  sort(as.character(unique(Site$CITY)))
 Tab <- list.files(file)
+if(length(Tab) == 0){
+  cat("\n.............................\n")
+  cat("Please first run the file \n\n 'Step1_run_all_model.R', ", "\n\n")
+  cat("and then try again...", "\n\n")
+  cat("\n.............................\n")
+}else{
 HDCMw <- NULL
 ######################################################################
 for(City in 1:13)
@@ -99,3 +105,4 @@ colnames(Resultw.SI.table) <- c("City",
                                 "FAC2.RF", "FAC2.SVC", "FAC2.HDCM",
                                 "Corr.CMAQ", "Corr.UK",
                                 "Corr.RF", "Corr.SVC", "Corr.HDCM")
+}

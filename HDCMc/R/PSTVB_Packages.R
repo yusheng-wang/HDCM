@@ -1,13 +1,13 @@
 # # 1 loading packages ---------------------------------------
 packages <- c("RandomFields","data.table", "spdep", "ggplot2"
               ,"plyr","parallel","sqldf","gpuR", "randomForest"
-              ,"reticulate","spBayes", "latex2exp"
+              ,"reticulate","spBayes", "latex2exp", "gstat"
               , "lubridate", "dplyr","INLA", "stBase"
               , "Hmisc", "MASS", "inlabru", "tidyr"
               , "progress", "RODBC", "fields", "rgdal"
               , "cowplot", "invgamma","DEoptim", "geoR"
               , "MBA", "scoringRules", "Rcpp", "writexl"
-              , "SpecsVerification", "STRbook"
+              , "SpecsVerification", "STRbook", "ggmap"
               , "verification", "mapproj", "sp", "mvnfast"
               , "rgdal") 
 # ,'MASS'

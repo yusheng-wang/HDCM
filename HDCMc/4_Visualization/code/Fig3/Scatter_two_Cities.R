@@ -1,5 +1,5 @@
 rm(list=ls())
-library(stBase)
+source("./R/PSTVB_Packages.R")
 data("SiteData", package = "stBase")
 #########################################################################
 Model_2015_2017_Tab <- Model_Base_Table_Update
@@ -83,84 +83,13 @@ p1 <- ggplot(data = data_base0) +
        y = TeX("CMAQ outputs ($μg/m^3$)")) +
   facet_wrap(~ FLAG + LAT_label, ncol = 2
              , labeller = labeller(LAT_label = Label)) + theme_bw() +
-  # guides(colour = guide_legend(override.aes = list(alpha = 1))) +facet_wrapfacet_grid
   theme(axis.text = element_text(size = 20, colour = "black")
         , axis.title = element_text(size = 22, colour = "black")
         , legend.title = element_text(size = 22, colour = "black")
         , legend.text = element_text(size = 20, colour = "black")
-        # , legend.title = element_blank()
-        # , legend.position = "none"
-        # , legend.key.size = unit(20,'cm')
-        # , legend.key.width = unit(3, "line")
-        # , legend.key.height = unit(10, "line")
         , strip.text =  element_text(size = 22, colour = "black"))
-#Explore_Summer
-# Explore_Winter
-FILE <- paste0("./4_Visualization/code/Scatter/")
-FILE <- "C:/Users/cheny/Dropbox/spCalibration/AOAS-2021-09/Manuscript_21_11/figure/"
-ggsave(plot = p1, paste0(FILE, 'Fig3',".png"),
+
+ggsave(plot = p1, paste0("./figure/", 'Fig3',".pdf"),
        width = 12, height = 12, dpi = 300)
 
 
-# data_base <- data_base0[FLAG == "winter of 2015"]
-# library(latex2exp)
-# Up <- max(data_base$REAL_PM25, data_base$CMAQ_PM25, na.rm = T) + 50
-# Low <- 0
-# p2 <- ggplot(data = data_base) +
-#   geom_point(aes(x = REAL_PM25, y = CMAQ_PM25), 
-#              colour = "black", size = 0.5)  +
-#   geom_abline(slope = 1, color = "gray", size = 1) +
-#   geom_abline(slope = 2, color = "gray",
-#               # linetype = "dotted",
-#               size = .5) +
-#   geom_abline(slope = 0.5, color = "gray",
-#               # linetype="dotted", 
-#               size = .5) +
-#   scale_x_continuous(limits = c(Low, Up), expand = c(0, 0)) + 
-#   scale_y_continuous(limits = c(Low, Up), expand = c(0, 0)) + 
-#   geom_abline(slope = 1, colour = "gray") +
-#   geom_text(y = 690,
-#             aes(x = 100, label = paste0("Corr = ", Corr)),
-#             size = 6, label.size = 18) +
-#   geom_text(x = (Up - Low)*1.23/2.55,
-#             y = Up*0.90,
-#             angle = 55,
-#             label = "k = 2",
-#             color = "gray",
-#             size = 5) +
-#   geom_text(x = (Up)*0.90,
-#             y = Up*0.86,
-#             angle = 43,
-#             label = "k = 1",
-#             size = 5) +
-#   geom_text(x = (Up)*0.88,
-#             y = Up*0.48,
-#             angle = 25,
-#             label = "k = 0.5",
-#             color = "gray",
-#             size = 5) +
-#   labs(x = TeX("Observed PM$_{2.5}$ ($μg/m^3$)"),
-#        y = TeX("CMAQ outputs ($μg/m^3$)")) +
-#   facet_grid(FLAG~ Latt + LAT_label,
-#              , labeller = labeller(LAT_label = Label)) + theme_bw() +
-#   # guides(colour = guide_legend(override.aes = list(alpha = 1))) +
-#   theme(axis.text = element_text(size = 16, colour = "black")
-#         , axis.title = element_text(size = 18, colour = "black")
-#         , legend.title = element_text(size = 16, colour = "black")
-#         , legend.text = element_text(size = 18, colour = "black")
-#         # , legend.title = element_blank()
-#         # , legend.position = "none"
-#         # , legend.key.size = unit(20,'cm')
-#         # , legend.key.width = unit(3, "line")
-#         # , legend.key.height = unit(10, "line")
-#         , strip.text =  element_text(size = 14, colour = "black"))
-# #Explore_Summer
-# # Explore_Winter
-# FILE <- paste0("./4_Visualization/code/Scatter/")
-# ggsave(plot = p2, paste0(FILE, 'Scatter_Winter_lat',".png"),
-#        width = 12, height = 6, dpi = 300)
-# 
-# library(cowplot)
-# p <- cowplot::plot_grid(p1, p2, nrow = 2)
-# ggsave(plot = p, paste0(FILE, 'Scatter',".pdf"),
-#        dpi= 300, width = 12, height = 10)

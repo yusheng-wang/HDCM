@@ -3,8 +3,8 @@ source("./R/PSTVB_Packages.R")
 data("SiteData", package = "stBase")
 thres = 400
 prob = 0.022
-source("./1_CrossValidation/code/Pred_Residual/Residual_S.R")
-source("./1_CrossValidation/code/Pred_Residual/Residual_W.R")
+source("./4_Visualization/code/Figure5/Pred_Residual/Residual_S.R")
+source("./4_Visualization/code/Figure5/Pred_Residual/Residual_W.R")
 label <- c("CMAQ", "UK", "RF", "SVC", "HDCM")
 {
   p1 <- ggplot(data = summer.Residual, aes(x = x, y = density)) + 

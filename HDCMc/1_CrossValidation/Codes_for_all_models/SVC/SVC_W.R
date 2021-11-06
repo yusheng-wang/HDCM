@@ -102,7 +102,7 @@ if(length(Covariate)>1){
           set.seed(1234)
           t = t + 1
           cat("\n\n   the ", City, "th City: ", City.Name[City], "!!!\n\n")
-          cat("   year:", Year, "; month: ", Month, "; day: ", Day," \n\n")
+          cat("   year: ", Year, "; month: ", Month, "; day: ", Day," \n\n")
           cat("...................SVC.................\n\n")
           # Database
           Da.mod <- Base_Tab[CITY %nin% City.Name[City] & DAY == Day, ]

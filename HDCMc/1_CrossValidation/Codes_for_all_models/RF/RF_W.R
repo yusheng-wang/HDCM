@@ -1,6 +1,5 @@
 source("./R/PSTVB_Packages.R")
 file = "./1_CrossValidation/data/"
-##################################################################
 ###################################################################
 #                           1. Data loading
 ###################################################################
@@ -12,8 +11,7 @@ file = "./1_CrossValidation/data/"
                                             , Model_Base_Table_Update$NA.Kriging
                                             , Model_Base_Table_Update$REAL_PM25)
   MODE_BASE_TABLE <- Model_Base_Table_Update %>% 
-    filter(YEAR_MONTH %in% c(201511, 201512, 201601) 
-           # , MONTH %in% c(12)
+    filter(YEAR_MONTH %in% c(201511, 201512, 201601)
     ) %>% setorder(DATE_TIME, SITEID) 
   setorderv(MODE_BASE_TABLE, c("CITY", 'SITEID', 'DATE_TIME'))
   setnames(MODE_BASE_TABLE, "REAL_PM25", "PM25")
@@ -38,8 +36,6 @@ for(City in 1:13)
   Da.mod <- MODE_BASE_TABLE[CITY %nin% City.Name[City], ]
   Da.pre <- MODE_BASE_TABLE[CITY %in% City.Name[City], ]
   setDF(Da.mod);setDF(Da.pre)
-  # Da.mod$CMAQ_PM25_30 = sqrt(Da.mod$CMAQ_PM25_30)
-  # Da.pre$CMAQ_PM25_30 = sqrt(Da.pre$CMAQ_PM25_30)
   Da.mod$PM25 <- (Da.mod$PM25)
   Da.pre$PM25 <- (Da.pre$PM25)
   
@@ -47,14 +43,7 @@ for(City in 1:13)
   Da.mod <- Da.mod[, c(Covariate, "PM25")]
   Da.pre <- Da.pre[, c(Covariate, "PM25")]
   # model
-  # Y = Da.mod[, "PM25"]
-  # X = as.matrix(cbind( sqrt(Da.mod[, c(Covariate)])))
-  # mtry <- tuneRF(Da.mod[, -7], Da.mod$PM25, ntreeTry=500,
-  #                stepFactor= 1.5,improve=0.01, 
-  #                trace=TRUE, plot=TRUE)
-  # best.m <- mtry[mtry[, 2] == min(mtry[, 2]), 1]
   rf <- randomForest((PM25)~., data = Da.mod, importance=TRUE, ntree = 500) 
-  # summary(rf)
   # test
   
   PM25.Pred <-  predict(rf, newdata = Da.pre[, -which(base::colnames(Da.pre) == "PM25")]) %>% as.vector()
@@ -70,8 +59,7 @@ for(City in 1:13)
     )
   }
   cat("....................RF..................\n\n")
-  
-  cat("       the ", City, "th City：", City.Name[City], "\n\n")
+  cat("       the ", City, "th City: ", City.Name[City], "\n\n")
   cat("....................RF..................\n\n")
   spT <- spT.validation(Da.pre0[, "True_REAL_PM25"],
                         PM25.Pred, NULL, F)

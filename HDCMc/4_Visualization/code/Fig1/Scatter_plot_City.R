@@ -1,4 +1,4 @@
-data("Model_Base_Table_2021", package = "stBase")
+data("SiteData", package = "stBase")
 colnames(Model_Base_Table_Update)
 
 CITY.Name <- c("Zhangjiakou")
@@ -9,7 +9,7 @@ Da1 <- Model_Base_Table_Update %>%
   ) %>%
   setorder(DATE_TIME, SITEID)  
 
-CITY.Name <- c("Beijing", "Hengshui")#c("Tangshan", "Baoding")
+CITY.Name <- c("Beijing", "Hengshui")
 month <- c(201506, 201507, 201508)
 Da2 <- Model_Base_Table_Update %>% 
   filter(YEAR_MONTH %in% month
@@ -100,9 +100,6 @@ p <- ggplot(data = Da) +
         , legend.key.height = unit(2,"line")
         , strip.text =  element_text(size = 20, colour = "black")
   )
-FILE <- "C:/Users/cheny/Dropbox/spCalibration/AOAS-2021-09/Manuscript_21_11/figure/"
-ggsave(plot = p, paste0(FILE, 'Fig1',".png"),
-       dpi = 400, width  = 5, height = 10)
-
-# ggsave(paste0("./figure/", 'Fig1_Scatter', ".jpg"),
-#        dpi = 300, width  = 5, height = 10)
+FILE <- "./figure/"
+ggsave(plot = p, paste0(FILE, 'Fig1_City',".png"),
+       dpi = 300, width  = 5, height = 10)

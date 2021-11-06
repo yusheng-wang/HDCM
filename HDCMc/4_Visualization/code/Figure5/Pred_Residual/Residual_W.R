@@ -1,3 +1,5 @@
+
+# in winter
 library(stBase)
 source("./R/PSTVB_Packages.R")
 data("SiteData", package = "stBase")
@@ -8,6 +10,12 @@ file <- "./1_CrossValidation/data/"
 Season <- "W"
 City.Name <-  sort(as.character(unique(Site$CITY)))
 Tab <- list.files(file)
+if(length(Tab) == 0){
+  cat("\n.............................\n")
+  cat("Please first run the file \n\n 'Step1_run_all_model.R', ", "\n\n")
+  cat("and then try again...", "\n\n")
+  cat("\n.............................\n")
+}else{
 HDCMs <- NULL
 ######################################################################
 for(City in 1:13)
@@ -76,7 +84,7 @@ range(SVC$Errors, na.rm = T)
 da <- rbind(CMAQ, UK, RF, SVC, HDCMs)
 
 da <- da[!is.na(da$Errors), ]
-da <- da[abs(da$Errors) %>% between(0, 400), ]
+da <- da[abs(da$Errors) %>% between(0, thres), ]
 ######################################################################
 #  plot
 ######################################################################
@@ -92,67 +100,13 @@ p <- ggplot(data = da[da$Model %in%
 #            , labeller = labeller(LAT_label = Label)
 # )    #facet_grid
 p0 <- ggplot_build(p)  
-da0 <- p0$data[[1]]
+winter.Residual <- p0$data[[1]]
 lab <-  unique(da$Model)
-da0$Model = if_else(da0$group==1, lab[1],
-                    if_else(da0$group==2, lab[2],
-                            if_else(da0$group==3, lab[3],   
-                                    if_else(da0$group==4, lab[4],
-                                            lab[5]))))
-da0$Model <- ordered(da0$Model, levels = c("CMAQ", "UK",
-                                           "RF", "SVC", "HDCM"))
-label <- c("CMAQ", "UK", "RF", "SVC", "HDCM")
-pdf(file = "./figure/Fig4_predict_bias_W.pdf", width = 12, height = 8)
-{
-  ggplot(data = da0, aes(x = x, y = density)) + 
-    # geom_point(aes(shape = Model), size = 5) +
-    geom_line(aes(linetype = Model, col = Model), size = 1.5) +
-    # scale_shape_manual(name = '', values =  c('*', '+'), labels = label) + 
-    scale_linetype_manual(name = '', values=  c("longdash", "dotdash",
-                                                "dotted", "dashed",
-                                                "solid"),
-                          labels = label) +
-    scale_color_manual(name = '', values =  c("red", "blue", "#4a1486",
-                                              "#31a354", "black"), 
-                       labels = label)+
-    geom_vline(xintercept = 0, col = "gray80", size = 0.8) +
-    theme_bw() +  
-    # geom_text(aes(x = min(da0$x), y = max(da0$density)
-    #               , label =  "(b)"),
-    #           # family = c("sans"),
-    #           fontface = 'bold',
-    #           color = "black", size = 10) +
-    labs(x = TeX("Error (μg/m^3): predicted value minus observed value")) +
-    theme(axis.text = element_text(size = 18, colour = "black")
-          ,axis.text.x = element_text(hjust = 0.25, size = 16, colour = "black") 
-          , axis.title = element_text(size = 18, colour = "black")
-          , legend.title = element_text(size = 18, colour = "black")
-          , legend.text = element_text(size = 20, colour = "black")
-          # , legend.title = element_blank()
-          , legend.background = element_rect(colour = 'transparent'
-                                             , fill = 'transparent')
-          , legend.key.width = unit(5,"line")
-          , panel.grid.major = element_blank()
-          , panel.grid.minor = element_blank()
-          , legend.position = c(0.25, 0.8)
-          # , legend.margin = margin(t = -0.1, unit='cm')
-          , strip.text =  element_text(size = 16, colour = "black")) +
-    guides(linetype = guide_legend(override.aes = list(size = 1.5),
-                                   nrow = 3, byrow = TRUE))
+winter.Residual$Model = if_else(winter.Residual$group==1, lab[1],
+                                if_else(winter.Residual$group==2, lab[2],
+                                        if_else(winter.Residual$group==3, lab[3],   
+                                                if_else(winter.Residual$group==4, lab[4],
+                                                        lab[5]))))
+winter.Residual$Model <- ordered(winter.Residual$Model, levels = c("CMAQ", "UK",
+                                                                   "RF", "SVC", "HDCM"))
 }
-dev.off()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
