@@ -36,7 +36,7 @@ grid$plot.grid
 ##########################################################################################
 #                       2. Mapping matrix: H
 ##########################################################################################
-Data_Str <- CreateHmatrix(grid, method = c("indicator"), #"Gaussian kernel, indicator, INLA
+Data_Str <- CreateHmatrix(grid, method = c("indicator"), #indicator, INLA, Wendland
                            site = Site, factor = 1, 
                            cs = .15,  distance = F,
                            distance.method = "geodetic:km" #geodetic:1000km
