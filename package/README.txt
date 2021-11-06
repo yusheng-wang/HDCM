@@ -1,0 +1,1 @@
+Another depedence package, STRbook,  can be available at https://github.com/andrewzm/STRbook

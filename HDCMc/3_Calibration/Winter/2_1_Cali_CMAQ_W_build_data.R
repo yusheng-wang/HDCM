@@ -9,7 +9,7 @@ file <- "./2_Full_Data_Model/data/"
 source("./R/PSTVB_Packages.R")
 # 1. randomly generate U spatial points around s by binary uniform distribution
 data("SiteData", package = "stBase")
-data("CMAQ", package = "stBase")
+data("CMAQ_PM25", package = "stBase")
 data("GeoMap", package = "stBase")
 cmaq_site <- spCoords.transform(as.data.frame(CMAQ_Site[, -c(4, 5)]), 
                                 col = c("LON", "LAT"), 
