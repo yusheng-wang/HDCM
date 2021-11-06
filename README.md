@@ -9,7 +9,7 @@ There are two parts to our codes:
 # Require core package
 1. R >= 4.1.1
 2. Rcpp >= 1.0.7
-2. gpuR >= 2.0.3
+3. gpuR >= 2.0.3
 ```
 
 The stBase package depends on the gpuR package that allows our codes to run on the GPU platform and hence further speeds up the calibration procedure. The source codes and its installation instructions for gpuR can now be found in a GitHub repository https://github.com/cdeterman/gpuR. One can also download the gpuR package here: https://cran.r-project.org/src/contrib/Archive/gpuR/.
