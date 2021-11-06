@@ -103,7 +103,6 @@ CV_T_Dist_W <- spMixCall(Tab = "HDCM_W", Site = Site, Yts_Xts = Yts_Xts,
 			 verbose.VB = TRUE, verbose = TRUE, Object = "CITY",
             		 cs = 0.4, ct = 1, tol.vb = 1e-5, tol.real = 1e-3, 
 			 itMax = 5e1, Obj.Seq = c(1:13))
-
 ```
 
 Based on the funtion spMixCall(), we show a calibration result for PM25 concentrations at Beijing:
