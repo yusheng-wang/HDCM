@@ -106,6 +106,6 @@ CV_T_Dist_W <- spMixCall(Tab = "HDCM_W", Site = Site, Yts_Xts = Yts_Xts,
 
 ```
 
-Based on the funtion spMixCall(), we show a calibration result from our HDCM:
+Based on the funtion spMixCall(), we show a calibration result for PM25 concentrations at Beijing:
 ![](./HDCMc/figure/Fig7_Beijing_S.png)
 
