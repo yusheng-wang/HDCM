@@ -26,15 +26,17 @@ data("SiteData", package = "stBase")
   coordinates(da) = ~ LON + LAT
 }
 size = c(10, 12, 3)
+# size = c(5, 7, 1)
 ###############################################################################
 #                                    plot
 ###############################################################################
+###############################################################################
 {
-  p <- ggplot() + gg(grid$mesh, int.color = "transparent") + 
+  p <- ggplot() + gg(grid$mesh, int.color = "transparent") + coord_equal()+ 
     geom_polygon(data = Map_BTH,
                  aes(x = long,y = lat, group = group),
                  colour = 'gray25', size = 0.5,
-                 fill = NA) + 
+                 fill = NA)+
     scale_x_continuous(limits=c(112, 121.2),
                        breaks = seq(113, 121, 2), 
                        labels = paste0(seq(113, 121, 2), "° E")) +
@@ -48,10 +50,10 @@ size = c(10, 12, 3)
               color = "black", size = size[3]) +
     geom_point(data = Site, aes(x = LON, y = LAT)
                , shape = 20
-               , col = "red", size = 1.0) +
+               , col = "red", size = 1) +
     theme_bw() + 
     labs(x =  "longitude", y = "latitude") +
-    theme( axis.ticks = element_line(size = 0.5, colour = "black")
+    theme( axis.ticks = element_line(size = 1, colour = "black")
            , axis.text = element_text(size = size[1], colour = "black")#, face = "bold"
            , axis.title= element_text(size = size[2], colour = "black")
            , legend.title = element_blank()
@@ -60,6 +62,7 @@ size = c(10, 12, 3)
            , panel.grid.minor = element_blank()
     )
 }
+# ggsave(plot = p, height = 5, dpi = 300, file = './figure/Fig4.png')
 ###############################################################################
-ggsave(plot = p, height = 6, width = 5, dpi = 300, file = './figure/Fig4.pdf')
+ggsave(plot = p, height = 6, dpi = 300, file = './figure/Fig4.pdf')
 ###############################################################################
