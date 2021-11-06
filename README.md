@@ -29,6 +29,9 @@ data("GeoMap", package = "stBase")
 grid <- CreateGrid(Site, max.edge = c(.35, .65), offset = c(1e-1, 0.5),
                    cutoff = .05, col = "black", size = 1)
 grid$plot.grid
+```{r pressure, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics("./HDCMc/figure/Fig4.pdf")
+```
 ##########################################################################################
 #                       2. Mapping matrix: H
 ##########################################################################################
