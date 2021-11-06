@@ -16,7 +16,7 @@ The stBase package depends on the gpuR package that allows our codes to run on t
 
 
 ```
-# Example for fitting HDCM 
+# An example for fitting HDCM 
 rm(list=ls())
 # remove.packages("stBase")
 # install.packages("./package/stBase_1.0.zip", repos = NULL, type = "win.binary")
