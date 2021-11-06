@@ -99,7 +99,7 @@ ds <- min(Data_Str$BAUs.Dist[row(Data_Str$BAUs.Dist)!= col(Data_Str$BAUs.Dist)])
 library(profvis)
 CV_T_Dist_W <- spMixCall(Tab = "HDCM_W", Site = Site, Yts_Xts = Yts_Xts, 
             		 Data_Str = Data_Str, prior = prior, para = para, 
-                         Total = F, Database = FALSE, parallel = TRUE, 
+                         Total = FALSE, Database = FALSE, parallel = TRUE, 
 			 verbose.VB = TRUE, verbose = TRUE, Object = "CITY",
             		 cs = 0.4, ct = 1, tol.vb = 1e-5, tol.real = 1e-3, 
 			 itMax = 5e1, Obj.Seq = c(1:13))
