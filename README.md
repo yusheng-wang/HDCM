@@ -105,3 +105,7 @@ CV_T_Dist_W <- spMixCall(Tab = "HDCM_W", Site = Site, Yts_Xts = Yts_Xts,
 			 itMax = 5e1, Obj.Seq = c(1:13))
 
 ```
+
+Based on the funtion spMixCall(), we show a calibration result from our HDCM:
+![](./HDCMc/figure/Fig7_Beijing_S.png)
+
