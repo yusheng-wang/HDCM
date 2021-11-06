@@ -8,6 +8,7 @@ There are two parts to our codes:
 ```
 # Require core package
 1. R >= 4.1.1
+2. Rcpp >= 1.0.7
 2. gpuR >= 2.0.3
 ```
 
