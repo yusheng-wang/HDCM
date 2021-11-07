@@ -117,9 +117,9 @@ p <- ggplot(Da, aes(x = DATE_TIME, group  = Model)) +
   scale_x_continuous(
     # expand = c(1e-5, 0),
     breaks  = unique(Da$DATE_TIME)
-    , labels = c("Dec 19, 2015", "Dec 20, 2015",
-                 "Dec 21, 2015", "Dec 22, 2015",
-                 "Dec 23, 2015", "Dec 24, 2015"
+    , labels = c("Dec 17, 2015", "Dec 18, 2015",
+                 "Dec 19, 2015", "Dec 20, 2015",
+                 "Dec 21, 2015", "Dec 22, 2015"
     )
   ) +
   scale_y_continuous(limits = c(0, UP), 
