@@ -1,6 +1,17 @@
 # HDCM
-Codes for the paper: “Efficient and Effective Calibration of Numerical Model Outputs Using Hierarchical Dynamic Models” by Y. Chen, X. Chang, B. Zhang, and H. Huang. 
+Data and Codes for the paper: “Efficient and Effective Calibration of Numerical Model Outputs Using Hierarchical Dynamic Models” by Y. Chen, X. Chang, B. Zhang, and H. Huang. 
 
+## Data
+Daily PM2.5 concentrations of China's Beijing-Tianjin-Hebei (BTH) region from the CMAQ system and national monitoring stations. The datasets contain two seasons of 2015 described in Section 2 of the manuscript. Besides PM2.5 concentrations, these datasets contain many necessary covariates, such as longitude, latitude, air pressure, temperature, dew point, cumulative wind power, and other variables.
+
+There are 3 .RData files. 
+-	CMAQ_PM25.RData contains numerical model outputs;
+-	SiteData.RData is for 68 monitoring stations;
+-	GeoMap.RData from other data sources. 
+
+We have developed an R package - stBase for this work. Using our stBase package, these data files can be loaded by using the ``data'' function. 
+
+## Codes
 There are two parts to our codes: 
 1. Our two algorithms, the VB and the EnKs, were written into the stBase package in the R statistical environment;
 2. A project entitled ``HDCMc'' in the Rstudio environment was built to reproduce all the results (e.g., figures and tables) in this work. 
@@ -13,6 +24,11 @@ There are two parts to our codes:
 ```
 
 The stBase package depends on the gpuR package that allows our codes to run on the GPU platform and hence further speeds up the calibration procedure. The source codes and its installation instructions for gpuR can now be found in a GitHub repository https://github.com/cdeterman/gpuR. One can also download the gpuR package here: https://cran.r-project.org/src/contrib/Archive/gpuR/.
+
+The stBase package can be installed by the following command:
+```
+ install.packages("./package/stBase_1.0.zip", repos = NULL, type = "win.binary")
+```
 
 
 ```
