@@ -22,8 +22,11 @@ There are two parts to our codes:
 2. Rcpp >= 1.0.7
 3. gpuR >= 2.0.3
 ```
-
-The stBase package depends on the gpuR package that allows our codes to run on the GPU platform and hence further speeds up the calibration procedure. The source codes and its installation instructions for gpuR can now be found in a GitHub repository https://github.com/cdeterman/gpuR. One can also download the gpuR package here: https://cran.r-project.org/src/contrib/Archive/gpuR/.
+One can first install most of the required dependent packages using the following command:
+```
+source("./R/PSTVB_Packages.R")
+```
+On the other hand, the stBase package depends on the gpuR package that allows our codes to run on the GPU platform and hence further speeds up the calibration procedure. The source codes and its installation instructions for gpuR can now be found in a GitHub repository https://github.com/cdeterman/gpuR One can also download the gpuR package here: https://cran.r-project.org/src/contrib/Archive/gpuR/
 
 The stBase package can be installed by the following command:
 ```
@@ -34,8 +37,6 @@ The stBase package can be installed by the following command:
 ```
 ################################ An example for fitting HDCM ############################
 rm(list=ls())
-# remove.packages("stBase")
-# install.packages("./package/stBase_1.0.zip", repos = NULL, type = "win.binary")
 source("./R/PSTVB_Packages.R")
 data("SiteData", package = "stBase")
 data("GeoMap", package = "stBase")
