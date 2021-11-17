@@ -18,7 +18,7 @@ PM25_CMAQ <- Model_2015_2017_Tab %>%
                 , LON, LAT)
 setDF(PM25_CMAQ)
 PM25_CMAQ$FLAG = if_else(PM25_CMAQ$YEAR_MONTH %in% c(201511, 201512, 201601)
-                         , "winter of 2015", "summer of 2015")
+                         , "Winter of 2015", "Summer of 2015")
 setDT(PM25_CMAQ)
 PM25_CMAQ <- PM25_CMAQ[!is.na(PM25_CMAQ$REAL_PM25)]
 da <- PM25_CMAQ %>% 
@@ -48,7 +48,32 @@ data_base0 <- PM25_CMAQ[CITY %in% c("Xingtai", "Tangshan")]
 Up <- max(data_base0$REAL_PM25, data_base0$CMAQ_PM25, na.rm = T) + 50
 Low <- 0
 library(latex2exp)
+library(ggtext)
+size <- c(28, 26)
 p1 <- ggplot(data = data_base0) +
+  geom_label(y = 680,
+             aes(x = 170, label = paste0("Corr = ", Corr)),
+             size = 10.5, label.size = NA
+             # ,family=c("serif")
+  ) +
+  geom_richtext(x = (Up - Low)*1.25/2.52, label.size = NA,
+                # fill  ="transparent",
+                y = Up*0.90,
+                angle = 60,
+                label = "k = 2",
+                color = "gray",
+                size = 9) +
+  geom_richtext(x = (Up)*0.92, label.size = NA,
+                y = Up*0.86,
+                angle = 38,
+                label = "k = 1",
+                size = 9) +
+  geom_richtext(x = (Up)*0.88, label.size = NA,
+                y = Up*0.48,
+                angle = 23,
+                label = "k = 0.5",
+                color = "gray",
+                size = 9) +
   geom_abline(slope = 1, color = "gray", size = 1) +
   geom_abline(slope = 2, color = "gray",
               size = 0.8) +
@@ -59,37 +84,16 @@ p1 <- ggplot(data = data_base0) +
   # geom_abline(slope = 1, colour = "gray") +
   geom_point(aes(x = REAL_PM25, y = CMAQ_PM25), 
              colour = "black", size = 1.5)  +
-  geom_text(y = 680,
-            aes(x = 150, label = paste0("Corr = ", Corr)),
-            size = 10, label.size = 18) +
-  geom_text(x = (Up - Low)*1.23/2.55,
-            y = Up*0.90,
-            angle = 60,
-            label = "k = 2",
-            color = "gray",
-            size = 8) +
-  geom_text(x = (Up)*0.90,
-            y = Up*0.86,
-            angle = 38,
-            label = "k = 1",
-            size = 8) +
-  geom_text(x = (Up)*0.88,
-            y = Up*0.48,
-            angle = 23,
-            label = "k = 0.5",
-            color = "gray",
-            size = 8) +
   labs(x = TeX("Observed PM$_{2.5}$ ($μg/m^3$)"),
        y = TeX("CMAQ outputs ($μg/m^3$)")) +
   facet_wrap(~ FLAG + LAT_label, ncol = 2
              , labeller = labeller(LAT_label = Label)) + theme_bw() +
-  theme(axis.text = element_text(size = 20, colour = "black")
-        , axis.title = element_text(size = 22, colour = "black")
-        , legend.title = element_text(size = 22, colour = "black")
-        , legend.text = element_text(size = 20, colour = "black")
-        , strip.text =  element_text(size = 22, colour = "black"))
+  theme(axis.text = element_text(size = size[2], colour = "black")
+        , axis.title = element_text(size = size[1], colour = "black")
+        , legend.title = element_text(size = size[1], colour = "black")
+        , legend.text = element_text(size = size[2], colour = "black")
+        , strip.text =  element_text(size = size[1], colour = "black"))
 
 ggsave(plot = p1, paste0("./figure/", 'Fig3',".pdf"),
        width = 12, height = 12, dpi = 300)
-
 

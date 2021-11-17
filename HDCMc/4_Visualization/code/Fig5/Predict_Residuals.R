@@ -1,10 +1,10 @@
 library(stBase)
 source("./R/PSTVB_Packages.R")
 data("SiteData", package = "stBase")
-thres = 400
+thres = 700
 prob = 0.022
-source("./4_Visualization/code/Fig5/Pred_Residual/Residual_S.R")
-source("./4_Visualization/code/Fig5/Pred_Residual/Residual_W.R")
+# source("./4_Visualization/code/Fig5/Pred_Residual/Residual_S.R")
+# source("./4_Visualization/code/Fig5/Pred_Residual/Residual_W.R")
 label <- c("CMAQ", "UK", "RF", "SVC", "HDCM")
 {
   p1 <- ggplot(data = summer.Residual, aes(x = x, y = density)) + 
@@ -95,17 +95,17 @@ label <- c("CMAQ", "UK", "RF", "SVC", "HDCM")
 # p
 # dev.off()
 
-summer.Residual$Season = "summer of 2015"
-winter.Residual$Season = "winter of 2015"
+summer.Residual$Season = "Summer of 2015"
+winter.Residual$Season = "Winter of 2015"
 da <- rbind(summer.Residual, winter.Residual)
 label <- c("CMAQ", "UK", "RF", "SVC", "HDCM")
 {
-pdf(file = "./figure/Fig5.pdf", width = 20, height = 8)
- ggplot(data = da, aes(x = x, y = density)) + 
+  pdf(file = "./figure/Fig5.pdf", width = 14, height = 12)
+  ggplot(data = da, aes(x = x, y = density)) + 
     # geom_point(aes(shape = Model), size = 5) +
     geom_line(aes(linetype = Model, col = Model), size = 1.5) +
     geom_hline(yintercept = 0.0, col = "gray80", size = 0.8) +
-    facet_wrap(~ Season, ncol = 2) +
+    facet_wrap(~ Season, ncol = 1) +
     # scale_shape_manual(name = '', values =  c('*', '+'), labels = label) + 
     scale_linetype_manual(name = '', values=  c("longdash", "dotdash",
                                                 "dotted", "dashed",
@@ -115,7 +115,9 @@ pdf(file = "./figure/Fig5.pdf", width = 20, height = 8)
                                               "#31a354", "black"), 
                        labels = label)+
     geom_vline(xintercept = 0, col = "gray80", size = 0.8) +
-    theme_bw() + ylim(c(0, prob)) + xlim(-250, 250) +
+    theme_bw() + ylim(c(0, prob)) + #xlim(-150, 150) +
+    scale_x_continuous(limits=c(-150, 150), breaks = seq(-150, 150, , 6),
+                       labels = seq(-150, 150, , 6)) + 
     #xlim(-thres, thres) +
     # geom_text(aes(x = -thres,#min(summer.Residual$x), 
     #               y = prob,#max(summer.Residual$density)
@@ -133,7 +135,7 @@ pdf(file = "./figure/Fig5.pdf", width = 20, height = 8)
           # , legend.title = element_blank()
           , legend.background = element_rect(colour = 'transparent'
                                              , fill = 'transparent')
-          , legend.key.width = unit(10,"line")
+          , legend.key.width = unit(5,"line")
           , panel.grid.major = element_blank()
           , panel.grid.minor = element_blank()
           , legend.position =  "top"#c(0.25, 0.95)#"top"#

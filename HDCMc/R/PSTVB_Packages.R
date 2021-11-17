@@ -12,7 +12,7 @@
 #               , "rgdal") 
 packages <- c("RandomFields","data.table", "ggplot2"
               ,"plyr","parallel","sqldf","gpuR", "randomForest"
-              , "spBayes", "latex2exp", "gstat"
+              , "spBayes", "latex2exp", "gstat", "ggtext"
               , "lubridate", "dplyr","INLA", "stBase"
               , "Hmisc", "MASS", "inlabru", "tidyr"
               , "progress", "RODBC", "fields", "rgdal"

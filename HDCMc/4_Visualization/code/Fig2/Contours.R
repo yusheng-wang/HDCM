@@ -4,11 +4,11 @@ data("SiteData", package = "stBase")
 ##########################################################################
 #                             in summer of 2015
 ##########################################################################
-Da.mod <- Model_Base_Table_Update %>% 
+Da.mod <- Model_Base_Table_Update %>%
   filter(YEAR_MONTH %in% c(201506, 201507, 201508)  #c(201511, 201512, 201601)
          # , MONTH %in% c(12)
   ) %>%
-  setorder(SITEID) 
+  setorder(SITEID)
 Da.mod$REAL_PM25 = if_else(is.na(Da.mod$REAL_PM25)
                            , Da.mod$NA.Kriging
                            , Da.mod$REAL_PM25)
@@ -38,19 +38,19 @@ vv1 <- variogram(object = REAL_PM25 ~ 1 , # fixed effect component
 ##########################################################################
 #                             in winter of 2015
 ##########################################################################
-Da.mod <- Model_Base_Table_Update %>% 
+Da.mod <- Model_Base_Table_Update %>%
   filter(YEAR_MONTH %in% c(201511, 201512, 201601)  #c(201511, 201512, 201601)
          # , MONTH %in% c(12)
   ) %>%
-  setorder(SITEID) 
+  setorder(SITEID)
 
 Da.mod$REAL_PM25 = if_else(is.na(Da.mod$REAL_PM25)
                            , Da.mod$NA.Kriging
                            , Da.mod$REAL_PM25)
 
-# PM25 <- Da.mod %>% 
+# PM25 <- Da.mod %>%
 #   dplyr::select(SITEID, DATE_TIME, REAL_PM25) %>%
-#   data.table::dcast(DATE_TIME ~ SITEID, #fun =mean, 
+#   data.table::dcast(DATE_TIME ~ SITEID, #fun =mean,
 #                     value.var = "REAL_PM25")
 setorderv(Da.mod, c("DATE_TIME","CITY_NAME"))
 temp_part <- as.Date(unique(Da.mod$DATE_TIME))
@@ -71,17 +71,17 @@ vv2 <- variogram(object = REAL_PM25 ~ 1 , # fixed effect component
                  width = 30, # spatial bin (80 km)
                  cutoff = 300, # consider pts < 1000 km apart
                  tlags = seq(0, 5, , 6)) # 0 days to 6 days
-vv1$Group = paste0("summer of 2015")
-vv2$Group = paste0("winter of 2015")
+vv1$Group = paste0("Summer of 2015")
+vv2$Group = paste0("Winter of 2015")
 
 ##########################################################################
 #                      plot
 ##########################################################################
-pdf(paste0(paste0("./figure/"), 'Fig_2',".pdf"), width = 12, height =  6)
+pdf(paste0(paste0("./figure/"), 'Fig2',".pdf"), width = 12, height =  6)
 par(mfrow = c(1, 2))
 op <- par(mar = c(4, 4, 2, 1) + 0.1) 
-par(cex= 1.5)
-par(mgp=c(2,1,0))
+par(cex= 1.25)
+par(mgp=c(2, 1, 0))
 vv <- vv1
 vv = vv[!is.na(vv$gamma), c(5, 6, 3)]
 # vv$spacelag = vv$spacelag
@@ -92,11 +92,11 @@ surf <- mba.surf(vv, no.X = nrow(vv), no.Y = nrow(vv),
 graphics::contour(x = surf$x, y = surf$y, z = surf$z
                   , ylab = "Spatial lags (km)"
                   , xlab = "Temporal lags (days)"
-                  , lwd  = 1.5
-                  , labcex = 0.7
+                  , lwd  = 2.0
+                  , labcex = 1.1
                   , )
 
-title(main = paste0("summer of 2015"))
+title(main = paste0("Summer of 2015"))
 vv <- vv2
 vv = vv[!is.na(vv$gamma), c(5, 6, 3)]
 # vv$spacelag = vv$spacelag
@@ -107,9 +107,9 @@ surf <- mba.surf(vv, no.X = nrow(vv), no.Y = nrow(vv),
 graphics::contour(x = surf$x, y = surf$y, z = surf$z
                   , ylab = "Spatial lags (km)"
                   , xlab = "Temporal lags (days)"
-                  , lwd  = 1.5
-                  , labcex = 0.7)
-title(main = paste0("winter of 2015"))
+                  , lwd  = 2.0
+                  , labcex = 1.1)
+title(main = paste0("Winter of 2015"))
 dev.off()
 
 

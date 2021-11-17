@@ -2,14 +2,13 @@
 ###################################################################
 source("./R/PSTVB_Packages.R")
 data("SiteData", package = "stBase")
-data("CMAQ", package = "stBase")
+data("CMAQ_PM25", package = "stBase")
 data("GeoMap", package = "stBase")
-Model_Base_Table_2021 <- Model_Base_Table_Update
 ###################################################################
 ###################################################################
 Year <- as.numeric(substr(YearMonth, 1, 4))
 Month <- as.numeric(substr(YearMonth, 5, 6))
-DATE <- unique(Model_Base_Table_2021[YEAR_MONTH %in% 
+DATE <- unique(Model_Base_Table_Update[YEAR_MONTH %in% 
                                        c(201511, 201512, 201601), .(DATE_TIME)]) %>% as.data.frame()
 date.index <- data.frame(T_index = 1:length(DATE$DATE_TIME), 
                          DATE_TIME = DATE$DATE_TIME,
@@ -214,10 +213,10 @@ Da <- rbind(CMAQ_Cali_PM25[, c("LON", "LAT", "DATE_TIME", "CMAQ_PM25", "Method")
 ###################################################################
 #              the real spatialtemporal data
 ###################################################################
-# load("./dataModel_Base_Table_2021.RData")
+# load("./dataModel_Base_Table_Update.RData")
 ###################################################################
 {
-  PM25_2015_2017_CMAQ <- Model_Base_Table_2021 %>%
+  PM25_2015_2017_CMAQ <- Model_Base_Table_Update %>%
             filter(YEAR_MONTH %in% YearMonth, 
                    day(DATE_TIME) %in% c(Day)) %>%
     setorder(SITEID, DATE_TIME) %>%

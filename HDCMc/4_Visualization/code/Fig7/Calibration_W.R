@@ -24,7 +24,6 @@ source(paste0(File.source, "Winter/2_3_Cali_CMAQ_W_prediction_Ensemble.R"))
 t2 <- proc.time()
 print(t2 - t1)
 ######################################################################
-######################################################################
 Label <- as_labeller(c(`1` = "After calibration", 
                        `2` = "Before calibration"))
 
@@ -44,18 +43,18 @@ int <- 1e2
                      , color = CMAQ_PM25
                      , fill =  CMAQ_PM25
                )
-               , size = 0.2, pch = 20) +
+               , size = 0.6, pch = 20) +
     geom_point(data = PM2.5#[day(DATE_TIME)==18]
                , aes(x = LON, y = LAT
                      , color = REAL_PM25
                      , fill =  REAL_PM25
                )
-               , size = 0.6, pch = 18) +
+               , size = 1.5, pch = 18) +
     facet_grid(Method ~ Date
                , labeller = labeller(Method = Label), switch="both") +
     scale_fill_distiller(palette = "Spectral", 
                          name = expression(atop(atop(textstyle("PM"[2.5]),
-                          textstyle(paste("(", mu, g, "/", m^{3},")"))), NA)), 
+                                                     textstyle(paste("(", mu, g, "/", m^{3},")"))), NA)), 
                          limits=c(0, y.max),
                          breaks = c(seq(0, y.max, int)),
                          labels = c(seq(0, y.max, int))

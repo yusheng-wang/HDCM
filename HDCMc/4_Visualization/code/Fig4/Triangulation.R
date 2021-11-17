@@ -1,6 +1,6 @@
 source("./R/PSTVB_Packages.R")
-data("GeoMap", package = "stBase")
-data("SiteData", package = "stBase")
+# data("GeoMap", package = "stBase")
+# data("SiteData", package = "stBase")
 ###############################################################################
 #                          construct triangles
 ###############################################################################
@@ -25,7 +25,7 @@ data("SiteData", package = "stBase")
   da <- Site
   coordinates(da) = ~ LON + LAT
 }
-size = c(10, 12, 3)
+size = c(15, 13, 4.0)
 # size = c(5, 7, 1)
 ###############################################################################
 #                                    plot
@@ -37,14 +37,14 @@ size = c(10, 12, 3)
                  aes(x = long,y = lat, group = group),
                  colour = 'gray25', size = 0.5,
                  fill = NA)+
-    scale_x_continuous(limits=c(112, 121.2),
-                       breaks = seq(113, 121, 2), 
-                       labels = paste0(seq(113, 121, 2), "° E")) +
-    scale_y_continuous(limits=c(35, 43.5),
+    scale_x_continuous(limits=c(112.5, 120.5),
+                       breaks = seq(113, 120.5, 1.5), 
+                       labels = paste0(seq(113, 120.5, 1.5), "° E")) +
+    scale_y_continuous(limits=c(35.3, 43.3),
                        breaks = seq(35, 43.5, 2),
-                       labels = paste0(seq(35, 43.5, 2), "° N"))+
-    geom_text(aes(x = 119, y = 35
-                  , label =  paste("Vertices: ", grid$mesh$n, " ",
+                       labels = paste0(seq(35, 43.2, 2), "° N"))+
+    geom_text(aes(x = 119.5, y = 37
+                  , label =  paste("Vertices: ", grid$mesh$n, " \n",
                                    "Triangles: ", 
                                    length(grid$mesh$graph$tv[,1]))),
               color = "black", size = size[3]) +
@@ -54,8 +54,8 @@ size = c(10, 12, 3)
     theme_bw() + 
     labs(x =  "longitude", y = "latitude") +
     theme( axis.ticks = element_line(size = 1, colour = "black")
-           , axis.text = element_text(size = size[1], colour = "black")#, face = "bold"
-           , axis.title= element_text(size = size[2], colour = "black")
+           , axis.text = element_text(size = size[2], colour = "black")#, face = "bold"
+           , axis.title= element_text(size = size[1], colour = "black")
            , legend.title = element_blank()
            , legend.position = "none"
            , panel.grid.major = element_blank()
@@ -64,5 +64,5 @@ size = c(10, 12, 3)
 }
 # ggsave(plot = p, height = 5, dpi = 300, file = './figure/Fig4.png')
 ###############################################################################
-ggsave(plot = p, height = 6, dpi = 300, file = './figure/Fig4.pdf')
+ggsave(plot = p, height = 6, file = './figure/Fig4.pdf')
 ###############################################################################
