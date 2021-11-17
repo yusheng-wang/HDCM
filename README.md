@@ -125,7 +125,7 @@ Based on the stBase package, we perform a space-time calibration of the the Comm
 ![aaaa](./HDCMc/figure/FigS3_Cali.png)
 In each of the 13 cities, the average PM2.5 concentration of all the stations in the city is marked using a solid square. The smoother the transition from the cities to the rural areas, the better the overall calibration results. It is evident that the before-calibration CMAQ outputs do not match well with most of the pollution data. After calibration, the transition from the cities to their surrounding areas becomes much smoother.
 
-Based on the funtion spMixCall(), we obatin estimates of some parameters such $`\beta_0`$ for the intercept, $`\sigma^2`$ for the variance of the error of data model,  $`\tau^2`$ and  $`\tau_0^2`$ are two scale parameters of the dynamic process model along with its initial state, see the following figure:  
+Based on the funtion spMixCall(), we obatin the posterior distribution of the HDCM parameters such as $`\beta_0`$ for the intercept (i.e., normal distribution), $`\sigma^2`$ for the variance of the error of data model (i.e., inverse Gamma distribution),  $`\tau^2`$ and  $`\tau_0^2`$ are two scale parameters of the dynamic process model along with its initial state  (i.e., Gamma distributions), see the following figure:  
 ![](./HDCMc/figure/Estimate_para.png)
 
 We also show a calibration result for PM2.5 concentrations at Beijing:
