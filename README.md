@@ -132,7 +132,7 @@ Based on the funtion spMixCall(), we obatin estimates of some parameters such $`
 We also show a calibration result for PM25 concentrations at Beijing:
 ![](./HDCMc/figure/Fig7_Beijing_S.png)
 
-The figure below recoveries a local addtive bias for the pollution map of the BTH between June 1,2015 and August 31,2015, see
+Our calibration model recoveries the local addtive bias pattern for the pollution map of the BTH between June 1,2015 and August 31,2015, see the following figure:
 ![](./HDCMc/figure/Fig_S_wts.png)
 
 In addition, we also provide posterior standard deviation of the calibrating map during this period:
