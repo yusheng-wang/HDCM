@@ -122,6 +122,21 @@ CV_T_Dist_W <- spMixCall(Tab = "HDCM_W", Site = Site, Yts_Xts = Yts_Xts,
 			 itMax = 5e1, Obj.Seq = c(1:13))
 ```
 
-Based on the funtion spMixCall(), we show a calibration result for PM25 concentrations at Beijing:
+Based on the stBase package, we perform a space-time calibration of the CAMQ model outputs for the entire BTH region using the proposed HDCM. The following figure displays the CMAQ outputs before and after calibration using the HDCM from  June 1,2015 and August 31,2015:
+![aaaa](./HDCMc/figure/FigS3_Cali.png)
+In each of the 13 cities, the average PM2.5 concentration of all the stations in the city is marked using a solid square. The smoother the transition from the cities to the rural areas, the better the overall calibration results. It is evident that the before-calibration CMAQ outputs do not match well with most of the pollution data. After calibration, the transition from the cities to their surrounding areas becomes much smoother.
+
+Based on the funtion spMixCall(), we obatin estimates of some parameters such $`\beta_0`$ for the intercept, $`\sigma^2`$ for variance of the error of data model,  $`\tau^2`$ and  $`\tau_0^2`$ are two scale parameters of the dynamic process model along with its initial state, see the following figure:  
+![](./HDCMc/figure/Estimate_para.png)
+
+We also show a calibration result for PM25 concentrations at Beijing:
 ![](./HDCMc/figure/Fig7_Beijing_S.png)
+
+The figure below recoveries a local addtive bias for the pollution map of the BTH between June 1,2015 and August 31,2015, see
+![](./HDCMc/figure/Fig_S_wts.png)
+
+In addition, we also provide posterior standard deviation of the calibrating map during this period:
+![](./HDCMc/figure/Fig_S_sd.png)
+
+Obviously, the closer to the location of the observation data, the lower the standard deviation.
 
