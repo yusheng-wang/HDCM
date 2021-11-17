@@ -121,7 +121,7 @@ CV_T_Dist_W <- spMixCall(Tab = "HDCM_W", Site = Site, Yts_Xts = Yts_Xts,
             		 cs = 0.4, ct = 1, tol.vb = 1e-5, tol.real = 1e-3, 
 			 itMax = 5e1, Obj.Seq = c(1:13))
 ```
-Based on the stBase package, we perform a space-time calibration of the the Community Multiscale Air Quality (CMAQ) system outputs for the entire BTH region using the proposed HDCM. The following figure displays the CMAQ outputs before and after calibration using the HDCM from June 1, 2015 and August 31, 2015:
+Based on the stBase package, we perform a space-time calibration of the the Community Multiscale Air Quality (CMAQ) system outputs for the entire BTH region using the proposed hierarchical dynamic calibration model (i.e., HDCM). The following figure displays the CMAQ outputs before and after calibration using the HDCM from June 1, 2015 and August 31, 2015:
 ![aaaa](./HDCMc/figure/FigS3_Cali.png)
 In each of the 13 cities, the average PM2.5 concentration of all the stations in the city is marked using a solid square. The smoother the transition from the cities to the rural areas, the better the overall calibration results. It is evident that the before-calibration CMAQ outputs do not match well with most of the pollution data. After calibration, the transition from the cities to their surrounding areas becomes much smoother.
 
