@@ -2,7 +2,7 @@
 Data and Codes for the paper: “Efficient and Effective Calibration of Numerical Model Outputs Using Hierarchical Dynamic Models” by Y. Chen, X. Chang, B. Zhang, and H. Huang. 
 
 ## Data
-Daily PM2.5 concentrations of China's Beijing-Tianjin-Hebei (BTH) region from the CMAQ system and national monitoring stations. The datasets contain two seasons of 2015 described in Section 2 of the manuscript. Besides PM2.5 concentrations, these datasets contain many necessary covariates, such as longitude, latitude, air pressure, temperature, dew point, cumulative wind power, and other variables.
+Daily PM2.5 concentrations of China's Beijing-Tianjin-Hebei (BTH) region from the Community Multiscale Air Quality (CMAQ) system and national monitoring stations. The datasets contain two seasons of 2015 described in Section 2 of the manuscript. Besides PM2.5 concentrations, these datasets contain many necessary covariates, such as longitude, latitude, air pressure, temperature, dew point, cumulative wind power, and other variables.
 
 There are 3 .RData files. 
 -	CMAQ_PM25.RData contains numerical model outputs;
@@ -123,7 +123,7 @@ CV_T_Dist_W <- spMixCall(Tab = "HDCM_W", Site = Site, Yts_Xts = Yts_Xts,
 ```
 
 ## Space-time calibration
-Based on the stBase package, we perform a space-time calibration of the Community Multiscale Air Quality (CMAQ) system outputs for the entire BTH region using the proposed hierarchical dynamic calibration model (i.e., HDCM). The following figure displays the CMAQ outputs before and after calibration using the HDCM from June 1, 2015 and August 31, 2015:
+Based on the stBase package, we perform a space-time calibration of the CMAQ system outputs for the entire BTH region using the proposed hierarchical dynamic calibration model (i.e., HDCM). The following figure displays the CMAQ outputs before and after calibration using the HDCM from June 1, 2015 and August 31, 2015:
 ![aaaa](./HDCMc/figure/FigS3_Cali.png)
 In each of the 13 cities, the average PM2.5 concentration of all the stations in the city is marked using a solid square. The smoother the transition from the cities to the rural areas, the better the overall calibration results. It is evident that the before-calibration CMAQ outputs do not match well with most of the pollution data. After calibration, the transition from the cities to their surrounding areas becomes much smoother.
 
