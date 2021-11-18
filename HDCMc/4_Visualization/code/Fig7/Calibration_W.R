@@ -6,7 +6,7 @@ data("SiteData", package = "stBase")
 ######################################################################
 File.source = "./3_Calibration/"
 t1 <- proc.time()
-#source(paste0(File.source, "Winter/2_0_Fit_HDCMw.R"))
+source(paste0(File.source, "Winter/2_0_Fit_HDCMw.R"))
 t2 <- proc.time()
 print(t2 - t1)
 cat("\n ........................ \n")
