@@ -33,7 +33,7 @@ The stBase package can be installed by the following command:
  install.packages("./package/stBase_1.0.zip", repos = NULL, type = "win.binary")
 ```
 
-
+## An example for the proposed hierarchical dynamic calibration model
 ```
 ################################ An example for fitting HDCM ############################
 rm(list=ls())
