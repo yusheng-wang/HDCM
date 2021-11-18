@@ -13,8 +13,8 @@ We have developed an R package - stBase for this work. Using our stBase package,
 
 ## Codes
 There are two parts to our codes: 
-1. Our two algorithms, the VB and the EnKs, were written into the stBase package in the R statistical environment;
-2. A project entitled ``HDCMc'' in the Rstudio environment was built to reproduce all the results (e.g., figures and tables) in this work. 
+1. Our two algorithms, the VB and the EnKs, were written into the [stBase](https://github.com/ChenYW68/HDCM/tree/main/HDCMc/package) package in the R statistical environment;
+2. A project entitled ``[HDCMc](https://github.com/ChenYW68/HDCM/tree/main/HDCMc)'' in the [RStudio](https://www.rstudio.com/products/rstudio/download/) environment was built to reproduce all the results (e.g., figures and tables) in this work. 
 
 ```
 # Require core package
@@ -22,7 +22,7 @@ There are two parts to our codes:
 2. Rcpp >= 1.0.7
 3. gpuR >= 2.0.3
 ```
-One needs to open the project file, ``HDCMc.Rproj``, based on the RStudio tool and then can first install most of the required dependent packages using the following command:
+One needs to open the project file, ``[HDCMc](https://github.com/ChenYW68/HDCM/tree/main/HDCMc).Rproj``, based on the [RStudio](https://www.rstudio.com/products/rstudio/download/) tool and then can first install most of the required dependent packages using the following command:
 ```
 source("./R/PSTVB_Packages.R")
 ```
