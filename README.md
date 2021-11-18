@@ -22,7 +22,7 @@ There are two parts to our codes:
 2. Rcpp >= 1.0.7
 3. gpuR >= 2.0.3
 ```
-One can first install most of the required dependent packages using the following command:
+One need to open a project file, ``HDCMc.Rproj``, based on the RStudio tool and then can first install most of the required dependent packages using the following command:
 ```
 source("./R/PSTVB_Packages.R")
 ```
