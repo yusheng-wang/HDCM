@@ -27,7 +27,7 @@ print(t2 - t1)
 Label <- as_labeller(c(`1` = "After calibration", 
                        `2` = "Before calibration"))
 
-library(STRbook)
+# library(STRbook)
 y.max <- max(Da$CMAQ_PM25, PM2.5$REAL_PM25)
 int <- 1e2
 ######################################################################

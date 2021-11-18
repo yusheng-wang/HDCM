@@ -16,7 +16,7 @@ grid$plot.grid
 ######################################################################
 #                    Mapping matrix: H
 ######################################################################
-Data_Str <- CreateHmatrix(grid, method = c("indictor"), #"Gaussian, indictor, INLA
+Data_Str <- CreateHmatrix(grid, method = c("indicator"), #"Gaussian, indicator, INLA
                            site = Site, factor = 1, 
                            cs = .15,  distance = F,
                            distance.method = "geodetic:km" #geodetic:1000km
