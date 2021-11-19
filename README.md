@@ -26,7 +26,7 @@ One needs to open the project file, ``[HDCMc.Rproj](https://github.com/ChenYW68/
 ```
 source("./R/PSTVB_Packages.R")
 ```
-On the other hand, the [stBase](https://github.com/ChenYW68/HDCM/tree/main/HDCMc/package) package depends on the gpuR package that allows our codes to run on the GPU platform and hence further speeds up the calibration procedure. The source codes and its installation instructions for gpuR can now be found in a GitHub repository https://github.com/cdeterman/gpuR One can also download the gpuR package here: https://cran.r-project.org/src/contrib/Archive/gpuR/
+On the other hand, the [stBase](https://github.com/ChenYW68/HDCM/tree/main/HDCMc/package) package depends on the gpuR package that allows our codes to run on the GPU platform and hence further speeds up the calibration procedure. The source codes and its installation instructions for gpuR can now be found in a GitHub repository https://github.com/cdeterman/gpuR . One can also download the gpuR package here: https://cran.r-project.org/src/contrib/Archive/gpuR/ .
 
 The [stBase](https://github.com/ChenYW68/HDCM/tree/main/HDCMc/package) package can be installed by the following command:
 ```
