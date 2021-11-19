@@ -9,12 +9,12 @@ There are 3 .RData files.
 -	SiteData.RData is for 68 monitoring stations;
 -	GeoMap.RData from other data sources. 
 
-We have developed an R package - stBase for this work. Using our stBase package, these data files can be loaded by using the ``data'' function. 
+We have developed an R package - [stBase](https://github.com/ChenYW68/HDCM/tree/main/HDCMc/package) for this work. Using our stBase package, these data files can be loaded by using the ``data'' function. 
 
 ## Codes
 There are two parts to our codes: 
 1. Our two algorithms, the VB and the EnKs, were written into the [stBase](https://github.com/ChenYW68/HDCM/tree/main/HDCMc/package) package in the R statistical environment;
-2. A project entitled ``[HDCMc](https://github.com/ChenYW68/HDCM/tree/main/HDCMc)'' in the [RStudio](https://www.rstudio.com/products/rstudio/download/) environment was built to reproduce all the results (e.g., figures and tables) in this work. 
+2. A project entitled ``[HDCMc.Rproj](https://github.com/ChenYW68/HDCM/tree/main/HDCMc)'' in the [RStudio](https://www.rstudio.com/products/rstudio/download/) environment was built to reproduce all the results (e.g., figures and tables) in this work. 
 
 ```
 # Require core package
@@ -135,7 +135,7 @@ Based on the funtion spMixCall(), we obatin the posterior distribution of the HD
 ![](./HDCMc/figure/Estimate_para.png)
 
 ### The local addtive bias pattern
-Our calibration model recoveries the local addtive bias (on the square root scale) pattern for the pollution map of the BTH between June 1, 2015 and August 31, 2015, see the following figure:
+Now, we use the HDCM to recovery the local addtive bias (on the square root scale) pattern for the pollution map of the BTH between June 1, 2015 and August 31, 2015, see the following figure:
 ![](./HDCMc/figure/Fig_S_wts.png)
 
 ### The posterior standard deviation of the calibration output
