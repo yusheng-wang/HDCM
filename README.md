@@ -130,11 +130,11 @@ In each of the 13 cities, the average PM2.5 concentration of all the stations in
 We also show a calibration result for PM2.5 concentrations at Beijing:
 ![Beijing](./HDCMc/figure/Fig7_Beijing_S.png)
 
-+ ### The posterior distribution
++ ### Posterior distribution
 Based on the funtion spMixCall(), we obatin the posterior distribution of the HDCM parameters such as $`\beta_0`$ for the intercept (i.e., normal distribution), $`\sigma^2`$ for the variance of the error of data model (i.e., inverse Gamma distribution),  $`\tau^2`$ and $`\tau_0^2`$ are two scale parameters of the dynamic process model along with its initial state  (i.e., Gamma distributions), see the following figures:  
 ![The posterior distribution](./HDCMc/figure/Estimate_para.png)
 
-+ ### The local addtive bias pattern
++ ### Local addtive bias pattern
 Now, we use the HDCM to recovery the local addtive bias (on the square root scale) pattern for the pollution map of the BTH between June 1, 2015 and August 31, 2015, see the following figure:
 ![](./HDCMc/figure/Fig_S_wts.png)
 
