@@ -11,9 +11,9 @@ load(paste0(file, "data/",HDCM))
 load(paste0(file, "data/", "train_HDCM2_W.RData"))
 y.fit <- test.HDCM(test = train, Ks = Re$Ks, PIU = Re$PIU, seed = 1234)
 y.fit <- (apply(y.fit, c(1, 2), quantile, prob = 0.5))
-HDCM2_Residuals_W <- as.vector((y.fit) - 
+HDCM2_Residuals <- as.vector((y.fit) - 
                                  (train$Y_ts))
-range(HDCM2_Residuals_W)
+range(HDCM2_Residuals)
 ###################################################################
 #                             CMAQ
 ###################################################################
@@ -35,15 +35,15 @@ density_range <- c(0, 0.05)
            # , MONTH %in% c(12)
     ) %>% setorder(DATE_TIME, SITEID) 
   
-  CMAQ_Residuals_S <- as.vector(MODE_BASE_TABLE$CMAQ_PM25 - 
+  CMAQ_Residuals <- as.vector(MODE_BASE_TABLE$CMAQ_PM25 - 
                                   MODE_BASE_TABLE$REAL_PM25)
-  range(CMAQ_Residuals_S)
+  range(CMAQ_Residuals)
   
-  da <- rbind(data.frame(index = 1:length(CMAQ_Residuals_S), 
-                         error = CMAQ_Residuals_S,
+  da <- rbind(data.frame(index = 1:length(CMAQ_Residuals), 
+                         error = CMAQ_Residuals,
                          method = "Before calibration"),
-              data.frame(index = 1:length(CMAQ_Residuals_S),
-                         error = HDCM2_Residuals_S,
+              data.frame(index = 1:length(CMAQ_Residuals),
+                         error = HDCM2_Residuals,
                          method = "After calibration"))
   ggplot(da) + geom_density(aes(x = error, linetype = method))
   

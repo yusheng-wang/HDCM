@@ -1,10 +1,5 @@
-# rm(list=ls())
+rm(list=ls())
 source("./R/PSTVB_Packages.R")
-# Rcpp::sourceCpp("./src/mathematics.cpp")
-# source("./R/TaEnKs.R")
-# listContexts()
-# setContext(2L)
-library(stBase)
 data("SiteData", package = "stBase")
 data("GeoMap", package = "stBase")
 Model_Base_Table_2021 <- Model_Base_Table_Update
@@ -28,8 +23,8 @@ Data_Str <- CreateHmatrix(grid, method = c("indicator"), #"Gaussian, indicator, 
 ######################################################################
 #                             Data truncation
 ######################################################################
-# 201506, 201507, 201508 # 201511, 201512, 201601
-YearMonth <- c(201511, 201512, 201601)
+# 201506,201507,201508 # 201511, 201512, 201601
+YearMonth <- c(201506, 201507, 201508)
 Model_Base_Table_2021[,
                       c("CMAQ_PM25_30", "REAL_RAIN", "ALTITUDE", "REAL_PRES")]=
   sqrt(Model_Base_Table_2021[,
@@ -37,12 +32,17 @@ Model_Base_Table_2021[,
 Yts_Xts <- ParYtsXts(Model_Base_Table_2021, include = list(
   YearMonth = YearMonth),
   X = c("CMAQ_PM25_30"
-        # , "REAL_LON_WIND", "REAL_TEMP"
-        # , "REAL_PRES", "REAL_DEWP", "REAL_LAT_WIND"
+        , "REAL_LON_WIND", "REAL_TEMP"
+        , "REAL_PRES", "REAL_DEWP", "REAL_LAT_WIND"
   )
   # ,Hs = Data_Str$Hs,
   # Z_ts = sqrt(Z_ts[4,,])
 )
+train <- list(H = Data_Str$Hs,
+              Y_ts = Yts_Xts$Y_ts,
+              X_ts = Yts_Xts$X_ts)
+
+save(train, file = paste0("./2_Full_Data_Model/data/", "train_HDCM2_S.RData"))
 ######################################################################
 #                         Model set
 ######################################################################
@@ -82,17 +82,14 @@ Yts_Xts <- ParYtsXts(Model_Base_Table_2021, include = list(
     , Proc0.tau2 = list(E_tau2 = 1, a = 2, b = 1)
   )
 }
-train <- list(H = Data_Str$Hs,
-              Y_ts = Yts_Xts$Y_ts,
-              X_ts = Yts_Xts$X_ts)
-save(train, file = paste0("./2_Full_Data_Model/data/", "train_HDCM_W.RData"))
+
 ######################################################################
 #                           fit model and prediction
 ######################################################################
 ds <- min(Data_Str$BAUs.Dist[row(Data_Str$BAUs.Dist)!= col(Data_Str$BAUs.Dist)])
 # assign("tau2",  NULL, envir = .GlobalEnv)
 library(profvis)
-CV_T_Dist_W <- spMixCall(Tab = "Fit_HDCM_W",
+CV_T_Dist_s <- spMixCall(Tab = "Fit_HDCM2_S",
                          Site = Site, Yts_Xts = Yts_Xts, 
                          Data_Str = Data_Str,
                          prior = prior, para = para, 
